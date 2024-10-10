@@ -1,4 +1,5 @@
 [profile.default]
+    block_timestamp = 1_727_740_800 # October 1, 2024 at 00:00 GMT
     src = "src"
     out = "out"
     libs = ["lib"]

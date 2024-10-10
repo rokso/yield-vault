@@ -1,3 +1,14 @@
 # Compiler files
 cache/
 out/
+
+# Env vars
+.env
+
+# Coverage
+report
+coverage
+lcov.info
+
+# File system
+.DS_store
