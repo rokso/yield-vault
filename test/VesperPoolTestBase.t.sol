@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.23;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {VesperPool} from "src/VesperPool.sol";
 
 import {MockERC20} from "test/mocks/MockERC20.sol";

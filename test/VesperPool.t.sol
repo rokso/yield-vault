@@ -3,13 +3,12 @@
 pragma solidity 0.8.23;
 
 import {PausableUpgradeable as Pausable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
-
 import {IPoolRewards} from "src/interfaces/IPoolRewards.sol";
 import {IStrategy} from "src/interfaces/IStrategy.sol";
 import {ShutdownableUpgradeable as Shutdownable} from "src/ShutdownableUpgradeable.sol";
 import {VesperPool} from "src/VesperPool.sol";
-import {Constants} from "test/helpers/Constants.sol";
-import {VesperPoolTestBase, console} from "test/VesperPoolTestBase.t.sol";
+
+import {VesperPoolTestBase} from "test/VesperPoolTestBase.t.sol";
 import {MockERC20} from "test/mocks/MockERC20.sol";
 
 contract VesperPool_Test is VesperPoolTestBase {
@@ -23,7 +22,7 @@ contract VesperPool_Test is VesperPoolTestBase {
         // deal assets amount at strategy address
         deal(address(_asset), _strategy, assets_);
         // transfer assets to pool
-        _asset.transfer(address(_pool), assets_);
+        require(_asset.transfer(address(_pool), assets_));
     }
 
     function _deposit(VesperPool pool_, address user_, uint256 assets_) internal {
@@ -280,7 +279,7 @@ contract VesperPool_Test is VesperPoolTestBase {
         vm.expectCall(_poolRewards, abi.encodeWithSelector(IPoolRewards.updateReward.selector), 2);
         uint256 _sharesToTransfer = pool.balanceOf(alice);
         vm.prank(alice);
-        pool.transfer(bob, _sharesToTransfer);
+        require(pool.transfer(bob, _sharesToTransfer));
         assertEq(pool.balanceOf(alice), 0);
         assertEq(pool.balanceOf(bob), _sharesToTransfer);
     }

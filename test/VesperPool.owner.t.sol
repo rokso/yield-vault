@@ -4,7 +4,7 @@ pragma solidity 0.8.23;
 
 import {OwnableUpgradeable as Ownable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {VesperPool} from "src/VesperPool.sol";
-import {IStrategy} from "src/interfaces/IStrategy.sol";
+
 import {VesperPoolTestBase} from "test/VesperPoolTestBase.t.sol";
 import {MockERC20} from "test/mocks/MockERC20.sol";
 
