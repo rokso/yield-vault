@@ -2,7 +2,6 @@
 
 pragma solidity 0.8.23;
 
-import {MockERC20} from "forge-std/mocks/MockERC20.sol";
 import {PausableUpgradeable as Pausable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
 
 import {IPoolRewards} from "src/interfaces/IPoolRewards.sol";
@@ -11,6 +10,7 @@ import {ShutdownableUpgradeable as Shutdownable} from "src/ShutdownableUpgradeab
 import {VesperPool} from "src/VesperPool.sol";
 import {Constants} from "test/helpers/Constants.sol";
 import {VesperPoolTestBase, console} from "test/VesperPoolTestBase.t.sol";
+import {MockERC20} from "test/mocks/MockERC20.sol";
 
 contract VesperPool_Test is VesperPoolTestBase {
     address bob = makeAddr("bob");

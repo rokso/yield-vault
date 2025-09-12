@@ -3,8 +3,9 @@
 pragma solidity 0.8.23;
 
 import {Test, console} from "forge-std/Test.sol";
-import {MockERC20} from "forge-std/mocks/MockERC20.sol";
 import {VesperPool} from "src/VesperPool.sol";
+
+import {MockERC20} from "test/mocks/MockERC20.sol";
 import {Constants} from "test/helpers/Constants.sol";
 
 contract VesperPoolTestBase is Test {
@@ -20,7 +21,7 @@ contract VesperPoolTestBase is Test {
 
     function setUp() public {
         pool = new VesperPool();
-        asset = deployMockERC20("Test Token", "TST", 6);
+        asset = new MockERC20();
         assetUnit = 10 ** asset.decimals();
         // clear storage to initialize pool
         vm.store(address(pool), Constants.INITIALIZABLE_STORAGE, bytes32(uint256(0)));

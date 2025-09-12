@@ -2,11 +2,11 @@
 
 pragma solidity 0.8.23;
 
-import {MockERC20} from "forge-std/mocks/MockERC20.sol";
 import {OwnableUpgradeable as Ownable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {VesperPool} from "src/VesperPool.sol";
 import {IStrategy} from "src/interfaces/IStrategy.sol";
 import {VesperPoolTestBase} from "test/VesperPoolTestBase.t.sol";
+import {MockERC20} from "test/mocks/MockERC20.sol";
 
 // Tests for owner role
 contract VesperPool_Owner_Test is VesperPoolTestBase {
@@ -117,7 +117,8 @@ contract VesperPool_Owner_Test is VesperPoolTestBase {
     }
 
     function test_sweep() public {
-        MockERC20 _tokenToSweep = deployMockERC20("Token to Sweep", "TTS", 18);
+        MockERC20 _tokenToSweep = new MockERC20();
+        _tokenToSweep.setDecimals(18);
         uint256 _amount = 100 ether;
         address _to = address(0x1a);
 

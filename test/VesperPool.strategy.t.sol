@@ -2,10 +2,11 @@
 
 pragma solidity 0.8.23;
 
-import {MockERC20} from "forge-std/mocks/MockERC20.sol";
 import {VesperPool} from "src/VesperPool.sol";
 import {IStrategy} from "src/interfaces/IStrategy.sol";
+
 import {VesperPoolTestBase, console} from "test/VesperPoolTestBase.t.sol";
+import {MockERC20} from "test/mocks/MockERC20.sol";
 import {Constants} from "test/helpers/Constants.sol";
 
 contract VesperPool_Strategy_Test is VesperPoolTestBase {
