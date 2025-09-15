@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.23;
+pragma solidity 0.8.30;
 
 import {VesperPool} from "src/VesperPool.sol";
 import {VesperPoolTestBase} from "test/VesperPoolTestBase.t.sol";
