@@ -4,7 +4,6 @@
     out = "out"
     libs = ["lib"]
     auto_detect_solc = false
-    solc = "0.8.23"
-    evm_version = "cancun"
+    solc = "0.8.30"
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
