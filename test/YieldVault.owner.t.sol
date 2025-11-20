@@ -203,11 +203,4 @@ contract YieldVault_Owner_Test is YieldVaultTestBase {
         vm.expectRevert(YieldVault.AddressIsNull.selector);
         vault.updateVaultRewards(address(0));
     }
-
-    function test_updatePerformanceFee_secondTest() public {
-        // default value is 0
-        assertEq(vault.performanceFee(), 0);
-        vault.updatePerformanceFee(300);
-        assertEq(vault.performanceFee(), 300);
-    }
 }
