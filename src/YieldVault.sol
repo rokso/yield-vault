@@ -44,6 +44,7 @@ contract YieldVault is ERC4626, ERC20Permit, Ownable, Shutdownable, UUPSUpgradea
     error ZeroAssets();
     error ZeroShares();
     error DuplicateStrategyInQueue();
+    error ProfitAndLossCannotBeReportedTogether();
 
     event EarningReported(
         address indexed strategy,
@@ -283,6 +284,7 @@ contract YieldVault is ERC4626, ERC20Permit, Ownable, Shutdownable, UUPSUpgradea
         StrategyConfig storage _config = $._strategyConfig[_strategy];
 
         if (!_config.active) revert StrategyIsNotActive();
+        if (profit_ > 0 && loss_ > 0) revert ProfitAndLossCannotBeReportedTogether();
         if (IERC20(asset()).balanceOf(_strategy) < (profit_ + payback_)) revert InsufficientBalance();
 
         // handle performance fee
